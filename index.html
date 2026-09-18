@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bellan Móveis | Um toque de modernidade em seu lar</title>
+<meta name="description" content="Bellan Móveis — móveis para casas, lojas e outros ambientes em Marília, SP.">
+<meta name="theme-color" content="#F8F7F4">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bellan Móveis">
+<meta property="og:description" content="Móveis para casas, lojas e outros ambientes. Um toque de modernidade em seu lar.">
+<meta property="og:image" content="logo.png">
+<meta property="og:locale" content="pt_BR">
+
+<link rel="icon" href="logo.png" type="image/png">
+<link rel="apple-touch-icon" href="logo.png">
+
+<!-- Fallbacks via Google Fonts, caso as fontes locais não carreguem -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ===========================================================
+   BELLAN MÓVEIS — LINK NA BIO
+   Agência Beltz
+
+   ONDE TROCAR AS IMAGENS (todas são <img src> ou style="background-image" no HTML abaixo):
+   1. Fundo da tela ....... <img class="fundo" src="fundo.jpg">
+   2. Logo redonda ........ <img class="logo__img" src="logo.png">
+   3. Fundo de cada link .. style="background-image:url('sua-imagem.jpg')" dentro de cada <a class="link">
+   =========================================================== */
+
+@font-face {
+  font-family: "Dream Avenue";
+  src: url("DreamAvenue.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("NeueMontreal-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("NeueMontreal-Medium.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+
+:root {
+  --primary: #BB6B37;
+  --primary-dark: #96522A;
+  --bg: #F8F7F4;
+  --surface: #FFFFFF;
+  --text: #2A2927;
+  --muted: #6E6A63;
+  --line: rgba(42, 41, 39, 0.09);
+  --shadow: rgba(42, 41, 39, 0.10);
+  /* Dream Avenue / Safira / The Seasons são fontes pagas sem versão web gratuita —
+     Cormorant Garamond é a que mais se aproxima do estilo (serifada, elegante, fina) */
+  --font-display: "Dream Avenue", "Cormorant Garamond", Georgia, serif;
+  /* Manrope como fallback do Neue Montreal — geometria bem parecida */
+  --font-body: "Neue Montreal", "Manrope", -apple-system, Helvetica, Arial, sans-serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --logo-tamanho: clamp(120px, 26vw, 168px);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.fundo {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.fundo-veu {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(255, 0, 0, 0) 0%, rgba(173, 172, 170, 0.555) 100%);
+}
+
+.logo {
+  width: var(--logo-tamanho);
+  height: var(--logo-tamanho);
+  margin: clamp(48px, 10vh, 84px) auto 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--surface);
+  border: 4px solid var(--surface);
+  box-shadow: 0 10px 30px var(--shadow);
+}
+
+.logo__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 28px 24px 8px;
+}
+
+.identity { text-align: center; margin-bottom: 34px; }
+
+.identity h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.5rem, 6vw, 3.4rem);
+  line-height: 1.05;
+  color: var(--primary);
+}
+
+.identity p {
+  margin: 10px 0 0;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  color: var(--muted);
+}
+
+.badges {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  padding: 5px 12px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* ---------- LINKS (agora com imagem de fundo) ---------- */
+.links { display: flex; flex-direction: column; gap: 14px; }
+
+.link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px;
+  min-height: 84px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(42,41,39,0.03), 0 10px 24px rgba(42,41,39,0.04);
+  transition: transform 260ms var(--ease), box-shadow 260ms var(--ease), border-color 260ms var(--ease);
+
+  /* IMAGEM DE FUNDO: troque a url abaixo (ou defina inline no HTML, veja mais abaixo) */
+  background-size: cover;
+  background-position: center;
+  background-color: var(--surface); /* aparece enquanto a imagem carrega / se faltar imagem */
+}
+
+/* véu escuro por cima da imagem, pra texto e ícone continuarem legíveis */
+.link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(20,18,16,0.55) 0%, rgba(20,18,16,0.25) 55%, rgba(20,18,16,0.08) 100%);
+  z-index: 0;
+}
+
+/* barra de destaque na lateral esquerda */
+.link::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--primary);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 260ms var(--ease);
+  z-index: 2;
+}
+
+.link__text, .link svg { position: relative; z-index: 1; }
+
+.link:hover, .link:focus-visible {
+  transform: scale(1.02);
+  border-color: rgba(187,107,55,0.45);
+  box-shadow: 0 2px 4px rgba(42,41,39,0.08), 0 16px 32px rgba(0,0,0,0.18);
+}
+
+.link:hover::before, .link:focus-visible::before { transform: scaleY(1); }
+.link:active { transform: scale(0.98); transition-duration: 120ms; }
+
+.link__text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+
+.link__title {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.35);
+}
+
+.link__sub {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.88);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.35);
+}
+
+/* ícone dentro de um círculo — resolve o problema de svg torto/desalinhado */
+.link__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: transform 260ms var(--ease);
+}
+
+.link__icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  color: var(--primary-dark);
+  stroke-width: 1.8;
+}
+
+.link:hover .link__icon, .link:focus-visible .link__icon { transform: translateX(4px); }
+
+/* ---------- RODAPÉ ---------- */
+.footer {
+  text-align: center;
+  padding: 40px 24px 32px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.7;
+}
+
+.footer a {
+  color: var(--primary-dark);
+  border-bottom: 1px solid transparent;
+}
+
+.footer a:hover { border-bottom-color: currentColor; }
+
+/* ---------- ANIMAÇÃO DE ENTRADA ---------- */
+.reveal {
+  opacity: 0;
+  animation: reveal 760ms var(--ease) forwards;
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(14px) scale(0.99); }
+  to   { opacity: 1; transform: none; }
+}
+
+.logo         { animation-delay: 120ms; }
+.identity h1  { animation-delay: 260ms; }
+.identity p   { animation-delay: 340ms; }
+.badges       { animation-delay: 470ms; }
+.links a:nth-child(1) { animation-delay: 540ms; }
+.links a:nth-child(2) { animation-delay: 620ms; }
+.links a:nth-child(3) { animation-delay: 700ms; }
+.links a:nth-child(4) { animation-delay: 780ms; }
+.links a:nth-child(5) { animation-delay: 860ms; }
+.footer       { animation-delay: 940ms; }
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 768px) {
+  .content { padding-left: 20px; padding-right: 20px; }
+  .link { padding: 18px; }
+}
+
+@media (max-width: 380px) {
+  .identity h1 { font-size: 2.3rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { animation: none; opacity: 1; }
+  .link, .link__icon, .link::before { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<img class="fundo" src="fundo.jpg" alt="" aria-hidden="true">
+<div class="fundo-veu" aria-hidden="true"></div>
+
+<div class="logo reveal">
+  <img class="logo__img" src="logo.png" alt="Bellan Móveis">
+</div>
+
+<div class="content">
+
+  <header class="identity">
+    <h1 class="reveal">Bellan</h1>
+    <p class="reveal">Um toque de modernidade em seu lar</p>
+
+    <div class="badges reveal">
+      <span class="badge">🏆 Melhor Loja 2024</span>
+      <span class="badge">🏆 Melhor Loja 2025</span>
+    </div>
+  </header>
+
+  <!-- ============ LINKS ============
+       Troque cada href="#" pela URL real.
+       Troque cada background-image:url('...') pela foto de fundo daquele link.
+       WhatsApp: https://wa.me/55DDDNUMERO?text=Ol%C3%A1!
+  ================================================= -->
+  <nav class="links">
+
+    <a class="link reveal" href="https://www.instagram.com/bellanmoveis?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener"
+       style="background-image:url('div.png')">
+      <span class="link__text">
+        <span class="link__title">Instagram</span>
+        <span class="link__sub">@bellanmoveis</span>
+      </span>
+      <span class="link__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" stroke="none"/>
+        </svg>
+      </span>
+    </a>
+
+    <a class="link reveal" href="https://wa.me/551496160270?text=Ol%C3%A1!" target="_blank" rel="noopener"
+       style="background-image:url('div.png')">
+      <span class="link__text">
+        <span class="link__title">WhatsApp</span>
+        <span class="link__sub">Fale com a Beatriz</span>
+      </span>
+      <span class="link__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.5 11.9a8.4 8.4 0 0 1-12.3 7.4L4 20.5l1.3-4a8.4 8.4 0 1 1 15.2-4.6Z"/>
+          <path d="M8.7 9.4c.2-.4.3-.4.5-.4h.4c.1 0 .3 0 .4.3l.6 1.4c.1.2 0 .4-.1.5l-.5.5c-.1.1-.2.3 0 .5.4.6 1.7 1.9 2.6 2.3.2.1.3 0 .4-.1l.5-.6c.1-.1.3-.2.5-.1l1.3.6c.2.1.3.2.3.4 0 .3-.1.7-.3 1-.3.4-1 .6-1.6.5-1.5-.3-3.1-1.3-4.2-2.5-.7-.7-1.2-1.5-1.4-2.2-.1-.5 0-1.1.4-1.5Z" fill="currentColor" stroke="none"/>
+        </svg>
+      </span>
+    </a>
+
+    <a class="link reveal" href="https://chat.whatsapp.com/Bb44tujGaeDJrUCvngfCIh?mode=gi_t" target="_blank" rel="noopener"
+       style="background-image:url('div.png')">
+      <span class="link__text">
+        <span class="link__title">Grupo de ofertas</span>
+        <span class="link__sub">Promoções exclusivas</span>
+      </span>
+      <span class="link__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.6 12.3 12.3 20.6a1.5 1.5 0 0 1-2.1 0l-7.8-7.8a1.5 1.5 0 0 1 0-2.1l8.3-8.3 9-1-1 9Z"/>
+          <circle cx="16" cy="8" r="1.2" fill="currentColor" stroke="none"/>
+        </svg>
+      </span>
+    </a>
+
+    <a class="link reveal" href="https://www.facebook.com/share/1DVysnw63e/?mibextid=wwXIfr" target="_blank" rel="noopener"
+       style="background-image:url('div.png')">
+      <span class="link__text">
+        <span class="link__title">Facebook</span>
+        <span class="link__sub">@bellanmoveis</span>
+      </span>
+      <span class="link__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 8h-1.5A2.5 2.5 0 0 0 11 10.5V12H9v3h2v6h3v-6h2.2l.5-3H14v-1.2a.8.8 0 0 1 .8-.8H15V8Z"/>
+        </svg>
+      </span>
+    </a>
+
+    <a class="link reveal" href="https://maps.app.goo.gl/PVDBsCFhNfvVFN6HA" target="_blank" rel="noopener"
+       style="background-image:url('div.png')">
+      <span class="link__text">
+        <span class="link__title">Como chegar</span>
+        <span class="link__sub">Marília — SP</span>
+      </span>
+      <span class="link__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 21s-7-6.5-7-11.5a7 7 0 0 1 14 0C19 14.5 12 21 12 21Z"/>
+          <circle cx="12" cy="9.5" r="2.3"/>
+        </svg>
+      </span>
+    </a>
+
+  </nav>
+</div>
+
+<footer class="footer reveal">
+  <p>© 2026 Bellan Móveis. Todos os direitos reservados.</p>
+  <p>Desenvolvido por <a href="https://www.agenciabeltz.com.br" target="_blank" rel="noopener">Agência Beltz</a></p>
+</footer>
+
+</body>
+</html>
